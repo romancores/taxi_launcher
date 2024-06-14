@@ -1,4 +1,5 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:taxi_launcher/src/models.dart';
 
 import 'taxi_launcher_method_channel.dart';
 
@@ -23,7 +24,20 @@ abstract class TaxiLauncherPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<void> launchTaxi({
+    required TaxiAppType taxiAppType,
+    required Coords destination,
+    Coords? origin,
+    Map<String, String>? extraParams,
+  }) {
+    throw UnimplementedError();
+  }
+
+  Future<List<AvailableTaxiApp>> getInstalledTaxis(){
+    throw UnimplementedError();
+  }
+
+  Future<bool?> isTaxiAppAvailable(TaxiAppType taxiAppType){
+    throw UnimplementedError();
   }
 }
