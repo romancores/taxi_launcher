@@ -8,7 +8,11 @@ private enum TaxiAppType: String {
     case yango
     case careem
     case dtc
+    case yandexgo
     case shail
+    case indrive
+    case grab
+    case gojek
 
     func type() -> String {
         return self.rawValue
@@ -40,8 +44,15 @@ private let taxis: [Taxi] = [
     Taxi(taxiAppName: "Careem", taxiAppType: TaxiAppType.careem, urlPrefix: "careem://"),
     Taxi(taxiAppName: "Cabify", taxiAppType: TaxiAppType.cabify,urlPrefix: "cabify://"),
     Taxi(taxiAppName: "DTC", taxiAppType: TaxiAppType.dtc,urlPrefix: "dtc://"),
-    Taxi(taxiAppName: "Yango", taxiAppType: TaxiAppType.dtc,urlPrefix: "yango://"),
-    Taxi(taxiAppName: "Shail", taxiAppType: TaxiAppType.shail,urlPrefix: "shail://")
+    Taxi(taxiAppName: "Yango", taxiAppType: TaxiAppType.yango,urlPrefix: "https://yango.go.link/en_int/order/"),
+    Taxi(taxiAppName: "YandexGo", taxiAppType: TaxiAppType.yandexgo,urlPrefix: "https://3.redirect.appmetrica.yandex.com/"),
+    Taxi(taxiAppName: "Shail", taxiAppType: TaxiAppType.shail,urlPrefix: "shail://"),
+    Taxi(taxiAppName: "InDrive", taxiAppType: TaxiAppType.indrive,urlPrefix: "indrive://"),
+    Taxi(taxiAppName: "Grab", taxiAppType: TaxiAppType.grab,urlPrefix: "grab://"),
+    Taxi(taxiAppName: "Gojek", taxiAppType: TaxiAppType.gojek,urlPrefix: "gojek://")
+
+
+
 ]
 
 private func getTaxiByRawTaxiAppType(type: String) -> Taxi? {

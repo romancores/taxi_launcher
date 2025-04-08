@@ -16,7 +16,24 @@ enum TaxiAppType {
   yango,
 
   /// Taxi app type DTC
-  dtc
+  dtc,
+
+  /// Taxi app type RideWithMe
+  // rideWithMe,
+
+  /// Taxi app type TaxiHail
+  // taxiHail,
+
+  /// Taxi app type Grab
+  grab,
+  /// Taxi app type InDrive
+  inDrive,
+  /// Taxi app type Gojek
+  gojek,
+  /// Taxi app type Bolt
+  // bolt,
+  /// Taxi app type YandexGo
+  yandexgo,
 }
 
 /// Class that holds latitude and longitude coordinates
@@ -41,23 +58,22 @@ class AvailableTaxiApp {
 
   /// Parses json object to [AvailableMap]
   static AvailableTaxiApp? fromJson(json) {
-    final TaxiAppType? taxiAppType =
-    Utils.enumFromString(TaxiAppType.values, json['taxiAppType']);
+    final TaxiAppType? taxiAppType = Utils.enumFromString(TaxiAppType.values, json['taxiAppType']);
     if (taxiAppType != null) {
       return AvailableTaxiApp(
         taxiName: json['taxiAppName'],
         taxiAppType: taxiAppType,
-        icon: 'packages/taxi_launcher/assets/icons/${json['taxiAppType']}.svg',
+        icon: 'packages/taxi_launcher/assets/icons/${json['taxiAppType'].toLowerCase()}.svg',
       );
     } else {
       return null;
     }
   }
 
-  factory AvailableTaxiApp.fromTaxiAppType(TaxiAppType taxiAppType) =>
-      AvailableTaxiApp(taxiName: Utils.capitalizedFirstLetter(Utils.enumToString(taxiAppType)) ?? '??',
-          taxiAppType: taxiAppType,
-          icon: 'packages/taxi_launcher/assets/icons/${Utils.enumToString(taxiAppType)}.svg');
+  factory AvailableTaxiApp.fromTaxiAppType(TaxiAppType taxiAppType) => AvailableTaxiApp(
+      taxiName: Utils.capitalizedFirstLetter(Utils.enumToString(taxiAppType)) ?? '??',
+      taxiAppType: taxiAppType,
+      icon: 'packages/taxi_launcher/assets/icons/${Utils.enumToString(taxiAppType)?.toLowerCase()}.svg');
 
   /// Launches current map and shows directions to `destination`
   Future<void> launchTaxi({
@@ -78,4 +94,3 @@ class AvailableTaxiApp {
     return 'AvailableTaxi { taxiAppName: $taxiName, taxiAppType: ${Utils.enumToString(taxiAppType)} }';
   }
 }
-

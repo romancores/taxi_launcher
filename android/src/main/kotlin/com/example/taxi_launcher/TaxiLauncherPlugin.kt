@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 
-private enum class TaxiAppType { uber, careem, cabify, yango, dtc }
+private enum class TaxiAppType { uber, careem, cabify, yango, dtc, yandexGo, grab, gojek, indrive }
 
 private class TaxiAppModel(val taxiAppType: TaxiAppType, val taxiAppName: String, val packageName: String, val urlPrefix: String) {
     fun toMap(): Map<String, String> {
@@ -47,8 +47,12 @@ class TaxiLauncherPlugin : FlutterPlugin, MethodCallHandler {
             TaxiAppModel(TaxiAppType.uber, "Uber", "com.ubercab", "uber://"),
             TaxiAppModel(TaxiAppType.careem, "Careem", "com.careem.acma", "careeem://"),
             TaxiAppModel(TaxiAppType.cabify, "Cabify", "com.cabify.rider", "cabify://"),
-            TaxiAppModel(TaxiAppType.yango, "Yango", "com.yandex.yango", "yango://"),
-            TaxiAppModel(TaxiAppType.dtc, "DTC", "com.dtc.dtccustomer", "dtc://")
+            TaxiAppModel(TaxiAppType.yango, "Yango", "com.yandex.yango", "https://yango.go.link/en_int/order/"),
+            TaxiAppModel(TaxiAppType.dtc, "DTC", "com.dtc.dtccustomer", "dtc://"),
+            TaxiAppModel(TaxiAppType.yandexGo, "YandexGo", "com.yandex.go", "https://3.redirect.appmetrica.yandex.com/"),
+            TaxiAppModel(TaxiAppType.grab, "Grab", "com.grabtaxi.passenger", "grab://"),
+            TaxiAppModel(TaxiAppType.gojek, "Gojek", "com.gojek.app", "gojek://"),
+            TaxiAppModel(TaxiAppType.indrive, "Indrive", "sinet.startup.inDriver", "indrive://")
     )
 
     private fun getInstalledTaxiApps(): List<TaxiAppModel> {

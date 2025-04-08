@@ -36,7 +36,7 @@ class MethodChannelTaxiLauncher extends TaxiLauncherPlatform {
   @override
   Future<List<AvailableTaxiApp>> getInstalledTaxis() async {
     final taxis = await methodChannel.invokeMethod('getInstalledTaxis');
-    log('available taxis: $taxis',name: 'TaxiLauncher');
+    log('available taxis: $taxis', name: 'TaxiLauncher');
     return List<AvailableTaxiApp>.from(
       taxis.map((map) => AvailableTaxiApp.fromJson(map)),
     );
