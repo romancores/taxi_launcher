@@ -33,15 +33,7 @@ class TaxiLauncherPlugin : FlutterPlugin, MethodCallHandler {
         this.context = flutterPluginBinding.applicationContext
         channel?.setMethodCallHandler(this)
     }
-    companion object {
-        fun registerWith(
-                @NonNull registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
-            val taxiLauncherPlugin = TaxiLauncherPlugin()
-            taxiLauncherPlugin.channel = MethodChannel(registrar.messenger(), "taxi_launcher")
-            taxiLauncherPlugin.context = registrar.context()
-            taxiLauncherPlugin.channel?.setMethodCallHandler(taxiLauncherPlugin)
-        }
-    }
+
 
     private val taxis = listOf(
             TaxiAppModel(TaxiAppType.uber, "Uber", "com.ubercab", "uber://"),
